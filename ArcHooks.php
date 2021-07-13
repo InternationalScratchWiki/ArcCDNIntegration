@@ -3,7 +3,7 @@
 define( 'ARCCDN_SESSION_KEY', 'arccdn-rollout-roll' );
 
 class ArcHooks {
-	public function addArcScript( OutputPage $out, $skin ) {
+	public static function addArcScript( OutputPage $out, $skin ) {
 		global $wgArcWidgetID, $wgArcRolloutPercentage, $wgRequest;
 		$session = $wgRequest->getSession();
 		if ( !$session->exists( ARCCDN_SESSION_KEY ) ) {
