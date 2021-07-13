@@ -15,3 +15,4 @@ Optionally, you can choose to only enable Arc CDN for a certain proportion of us
 ```php
 $wgArcRolloutPercentage = 10; // 10% of users will be involved
 ```
+Finally, serve [arc-sw.js](https://arc.io/arc-sw.js) from your web root, either by reverse proxying to that link or just copying and serving it yourself.
