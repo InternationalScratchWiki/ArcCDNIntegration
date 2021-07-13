@@ -3,6 +3,7 @@
 	"author": ["Jacob G. (jvvg)", "Kenny2scratch"],
 	"description": "Integrate [https://arc.io Arc] with MediaWiki.",
 	"url": "https://github.com/InternationalScratchWiki/ArcCDNIntegration",
+	"license": "MIT",
 	"config": {
 		"ArcRolloutPercentage": {
 			"value": 100
