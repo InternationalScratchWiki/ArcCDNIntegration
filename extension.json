@@ -1,0 +1,15 @@
+{
+	"name": "ArcCDNIntegration",
+	"author": ["Jacob G. (jvvg)", "Kenny2scratch"],
+	"description": "Integrate [https://arc.io Arc] with MediaWiki.",
+	"url": "https://github.com/InternationalScratchWiki/ArcCDNIntegration",
+	"config": {
+		"ArcRolloutPercentage": {
+			"value": 100
+		},
+		"ArcWidgetID": {
+			"value": null
+		}
+	}
+	"manifest_version": 2
+}
