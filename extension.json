@@ -4,6 +4,12 @@
 	"description": "Integrate [https://arc.io Arc] with MediaWiki.",
 	"url": "https://github.com/InternationalScratchWiki/ArcCDNIntegration",
 	"license": "MIT",
+	"AutoloadClasses": {
+		"ArcHooks": "ArcHooks.php"
+	},
+	"Hooks": {
+		"BeforePageDisplay": "ArcHooks::addArcScript"
+	},
 	"config": {
 		"ArcRolloutPercentage": {
 			"value": 100
