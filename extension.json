@@ -8,6 +8,7 @@
 		"ArcHooks": "ArcHooks.php"
 	},
 	"Hooks": {
+		"GetPreferences": "ArcHooks::onGetPreferences",
 		"BeforePageDisplay": "ArcHooks::addArcScript"
 	},
 	"MessagesDirs": {

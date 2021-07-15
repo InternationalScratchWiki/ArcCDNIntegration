@@ -1,14 +1,20 @@
 <?php
 
 define( 'ARCCDN_SESSION_KEY', 'arccdn-rollout-roll' );
+define( 'ARCCDN_PREFERENCE', 'arccdn-opt-in' );
 
 class ArcHooks {
 	public static function addArcScript( OutputPage $out, $skin ) {
 		global $wgArcWidgetID, $wgArcRolloutPercentage;
 		if ( !$wgArcWidgetID ) return;
+		$lookup = MediaWiki\MediaWikiServices::getInstance()->getUserOptionsLookup();
+		$pref = $lookup->getBoolOption( $skin->getUser(), ARCCDN_PREFERENCE );
 		if ( $wgArcRolloutPercentage == 100 ) {
 			$roll = 0;
 			$comment = wfMessage( 'arccdn-comment-rollout-everyone' )->escaped();
+		} else if ( $pref ) {
+			$roll = 0;
+			$comment = wfMessage( 'arccdn-comment-opted-in' )->escaped();
 		} else {
 			$session = $skin->getRequest()->getSession();
 			if ( !$session->exists( ARCCDN_SESSION_KEY ) ) {
@@ -26,5 +32,14 @@ class ArcHooks {
 <!-- $comment -->
 EOS );
 		}
+	}
+
+	public static function onGetPreferences( $user, &$preferences ) {
+		$preferences[ARCCDN_PREFERENCE] = [
+			'type' => 'toggle',
+			'section' => 'rendering',
+			'label-message' => 'arccdn-opt-in',
+			'help-message' => 'arccdn-opt-in-help'
+		];
 	}
 }
