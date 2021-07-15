@@ -30,6 +30,7 @@ class ArcHooks {
 		if ( $roll <= $wgArcRolloutPercentage ) {
 			$out->addHeadItem( 'arccdn-widget', <<<EOS
 <!-- $comment -->
+<script async src="https://arc.io/widget.min.js#$wgArcWidgetID"></script>
 EOS );
 		}
 	}
