@@ -8,17 +8,22 @@ class ArcHooks {
 		if ( !$wgArcWidgetID ) return;
 		if ( $wgArcRolloutPercentage == 100 ) {
 			$roll = 0;
+			$comment = wfMessage( 'arccdn-comment-rollout-everyone' )->escaped();
 		} else {
 			$session = $skin->getRequest()->getSession();
 			if ( !$session->exists( ARCCDN_SESSION_KEY ) ) {
 				$session->set( ARCCDN_SESSION_KEY, rand( 1, 100 ) );
 			}
 			$roll = $session->get( ARCCDN_SESSION_KEY );
+			$comment = wfMessage(
+				'arccdn-comment-rollout-percentage',
+				$roll, $wgArcRolloutPercentage
+			)->escaped();
 		}
+		$comment = wfMessage( 'arccdn-comment' )->rawParams( $comment )->escaped();
 		if ( $roll <= $wgArcRolloutPercentage ) {
 			$out->addHeadItem( 'arccdn-widget', <<<EOS
-<!-- adding Arc widget as $roll <= $wgArcRolloutPercentage -->
-<script async src="https://arc.io/widget.min.js#$wgArcWidgetID"></script>
+<!-- $comment -->
 EOS );
 		}
 	}

@@ -10,6 +10,11 @@
 	"Hooks": {
 		"BeforePageDisplay": "ArcHooks::addArcScript"
 	},
+	"MessagesDirs": {
+		"ArcCDNIntegration": [
+			"i18n"
+		]
+	},
 	"config": {
 		"ArcRolloutPercentage": {
 			"value": 100
